@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:payment_app/core/widget/custom_button.dart';
+import 'package:payment_app/features/payment/presentation/views/widgets/cart_info_item.dart';
+import 'package:payment_app/features/payment/presentation/views/widgets/total_price_widget.dart';
 
 class MyCartViewBody extends StatelessWidget {
   const MyCartViewBody({super.key});
