@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payment_app/features/payment/presentation/views/widgets/my_cart_view.dart';
+import 'package:payment_app/features/payment/presentation/views/my_cart_view.dart';
 
 class PaymentApp extends StatelessWidget {
   const PaymentApp({super.key});
