@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:payment_app/core/utils/syles.dart';
+import 'package:payment_app/features/payment/presentation/views/widgets/payment_info_item.dart';
+import 'package:payment_app/features/payment/presentation/views/widgets/total_price_widget.dart';
 
 class ThankYouCard extends StatelessWidget {
   const ThankYouCard({
