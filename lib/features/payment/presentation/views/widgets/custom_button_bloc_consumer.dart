@@ -2,10 +2,13 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:payment_app/core/utils/constants.dart';
 import 'package:payment_app/core/widget/custom_button.dart';
+import 'package:payment_app/features/payment/data/models/payment_intent_model/payment_intent_input_model.dart';
 import 'package:payment_app/features/payment/presentation/payment/payment_cubit.dart';
 import 'package:payment_app/features/payment/presentation/payment/payment_state.dart';
 import 'package:payment_app/features/payment/presentation/views/my_cart_view.dart';
+import 'package:payment_app/features/payment/presentation/views/widgets/thank_you_view.dart';
 
 class CustomButtonBlocConsumer extends StatelessWidget {
   const CustomButtonBlocConsumer({
@@ -27,7 +30,7 @@ class CustomButtonBlocConsumer extends StatelessWidget {
 
         if (state is PaymentFailure) {
           Navigator.of(context).pop();
-          SnackBar snackBar = SnackBar(content: Text(state.errMessage));
+          SnackBar snackBar = SnackBar(content: Text(state.message));
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }
       },
@@ -62,8 +65,8 @@ class CustomButtonBlocConsumer extends StatelessWidget {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (BuildContext context) => PaypalCheckoutView(
         sandboxMode: true,
-        clientId: ApiKeys.clientID,
-        secretKey: ApiKeys.paypalSecretKey,
+        clientId: Constants.clientID,
+        secretKey: Constants.paypalSecretKey,
         transactions: [
           {
             "amount": transctionsData.amount.toJson(),
