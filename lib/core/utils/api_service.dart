@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 
-class StripeService {
+class ApiService {
   final Dio dio = Dio();
-  Future<Response> createPaymentInten(
+  Future<Response> post(
       {required body,
       required String url,
       required String token,
