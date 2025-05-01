@@ -1,0 +1,14 @@
+import 'package:payment_app/features/payment/data/models/payment_intent_model/payment_intent_input_model.dart';
+import 'package:payment_app/features/payment/data/repos/checkout_repo.dart';
+import 'package:payment_app/features/payment/presentation/payment/payment_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class PaymentCubit extends Cubit<PaymentState> {
+  final CheckoutRepo checkoutRepo;
+  PaymentCubit(this.checkoutRepo) : super(PaymentInitial());
+
+  Future makePayment(
+      {required PaymentIntentInputModel paymentIntentInputModel}) async {
+        emit(Pa)
+      }
+}
