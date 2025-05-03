@@ -1,4 +1,6 @@
 
+import 'package:payment_app/features/payment/data/models/amount_model/amount_model.dart';
+
 ({AmountModel amount, ItemListModel itemList}) getTransctionsData() {
   var amount = AmountModel(
       total: "100",
