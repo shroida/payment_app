@@ -52,17 +52,21 @@ class StripeService {
     await Stripe.instance.presentPaymentSheet();
   }
 
-  Future makePayment({required String email, required int amount}) async {
-    final customerId = await createCustomer(email: email);
+  Future makePayment({required PaymentIntentInputModel input}) async {
+    final customerId = await createCustomer(email: input.email);
 
-    var paymentIntentModel = await createPaymentIntent(
+    final paymentIntentModel = await createPaymentIntent(
       PaymentIntentInputModel(
-          amount: amount.toString(), currency: 'USD', customerId: customerId),
+        email: customerId,
+        amount: input.amount,
+        currency: input.currency,
+        customerId: customerId,
+      ),
     );
 
-    var ephemeralKeyModel = await createEphemeralKey(customerId: customerId);
+    final ephemeralKeyModel = await createEphemeralKey(customerId: customerId);
 
-    var initPaymentSheetInputModel = InitiPaymentSheetInputModel(
+    final initPaymentSheetInputModel = InitiPaymentSheetInputModel(
       clientSecret: paymentIntentModel.clientSecret!,
       customerId: customerId,
       ephemeralKeySecret: ephemeralKeyModel.secret!,

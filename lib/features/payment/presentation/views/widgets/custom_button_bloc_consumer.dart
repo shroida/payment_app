@@ -18,7 +18,7 @@ class CustomButtonBlocConsumer extends StatelessWidget {
     super.key,
     required this.isPaypal,
   });
-
+  final userEmail = "walied@example.com";
   final bool isPaypal;
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,6 @@ class CustomButtonBlocConsumer extends StatelessWidget {
         }
 
         if (state is PaymentFailure) {
-          print(state.message);
           Navigator.of(context).pop();
           SnackBar snackBar = SnackBar(content: Text(state.message));
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -57,6 +56,7 @@ class CustomButtonBlocConsumer extends StatelessWidget {
   void excuteStripePayment(BuildContext context) {
     PaymentIntentInputModel paymentIntentInputModel = PaymentIntentInputModel(
       amount: '100',
+      email: userEmail,
       currency: 'USD',
       customerId: 'cus_Onu3Wcrzhehlez',
     );
