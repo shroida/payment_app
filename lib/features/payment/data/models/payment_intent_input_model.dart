@@ -3,14 +3,17 @@ class PaymentIntentInputModel {
   final String currency;
   final String customerId;
 
-  PaymentIntentInputModel(
-      {required this.customerId, required this.amount, required this.currency});
+  PaymentIntentInputModel({
+    required this.amount,
+    required this.currency,
+    required this.customerId,
+  });
 
-  toJson() {
+  Map<String, dynamic> toJson() {
     return {
-      'amount': '${amount}00',
+      'amount': amount,
       'currency': currency,
-      'customer': customerId
+      'customer': customerId,
     };
   }
 }
