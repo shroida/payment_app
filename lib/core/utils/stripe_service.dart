@@ -8,7 +8,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 class StripeService {
   final Dio dio = Dio();
   final ApiService apiService = ApiService();
-  Future<PaymentIntentModel> createPaymentInten(
+  Future<PaymentIntentModel> createPaymentIntent(
       PaymentIntentInputModel paymentModel) async {
     var response = await apiService.post(
       url: 'https://api.stripe.com/v1/payment_intents',
@@ -31,7 +31,7 @@ class StripeService {
   }
 
   Future makePayment({required PaymentIntentInputModel paymentModel}) async {
-    var paymentIntentModel = await createPaymentInten(paymentModel);
+    var paymentIntentModel = await createPaymentIntent(paymentModel);
 
     await initPaymentSheet(
         paymentIntentClientSecret: paymentIntentModel.clientSecret!);
