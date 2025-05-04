@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:payment_app/core/utils/api_service.dart';
 import 'package:payment_app/core/utils/constants.dart';
-import 'package:payment_app/features/payment/data/models/payment_intent_model/payment_intent_input_model.dart';
+import 'package:payment_app/features/payment/data/models/payment_intent_input_model.dart';
 import 'package:payment_app/features/payment/data/models/payment_intent_model/payment_intent_model.dart';
 
 class StripeService {

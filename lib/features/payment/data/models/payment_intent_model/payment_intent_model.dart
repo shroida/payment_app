@@ -1,6 +1,6 @@
 import 'amount_details.dart';
 import 'automatic_payment_methods.dart';
-import 'metadata.dart';
+import '../metadata.dart';
 import 'payment_method_options.dart';
 
 class PaymentIntentModel {

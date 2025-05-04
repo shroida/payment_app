@@ -7,7 +7,7 @@ import 'package:payment_app/core/utils/constants.dart';
 import 'package:payment_app/core/widget/custom_button.dart';
 import 'package:payment_app/features/payment/data/models/amount_model/amount_model.dart';
 import 'package:payment_app/features/payment/data/models/item_list_model/item_list_model.dart';
-import 'package:payment_app/features/payment/data/models/payment_intent_model/payment_intent_input_model.dart';
+import 'package:payment_app/features/payment/data/models/payment_intent_input_model.dart';
 import 'package:payment_app/features/payment/presentation/payment/payment_cubit.dart';
 import 'package:payment_app/features/payment/presentation/payment/payment_state.dart';
 import 'package:payment_app/features/payment/presentation/views/my_cart_view.dart';
