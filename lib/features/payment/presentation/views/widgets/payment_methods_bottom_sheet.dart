@@ -3,7 +3,9 @@ import 'package:payment_app/features/payment/presentation/views/widgets/custom_b
 import 'package:payment_app/features/payment/presentation/views/widgets/payment_methods_list_view.dart';
 
 class PaymentMethodsBottomSheet extends StatefulWidget {
-  const PaymentMethodsBottomSheet({super.key});
+  final String totalPrice; 
+
+  const PaymentMethodsBottomSheet({super.key, required this.totalPrice});
 
   @override
   State<PaymentMethodsBottomSheet> createState() =>
@@ -40,6 +42,7 @@ class _PaymentMethodsBottomSheetState extends State<PaymentMethodsBottomSheet> {
             height: 32,
           ),
           CustomButtonBlocConsumer(
+            totalPrice: widget.totalPrice,
             isPaypal: isPaypal,
           ),
         ],

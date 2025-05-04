@@ -14,12 +14,15 @@ import 'package:payment_app/features/payment/presentation/views/my_cart_view.dar
 import 'package:payment_app/features/payment/presentation/views/widgets/thank_you_view.dart';
 
 class CustomButtonBlocConsumer extends StatelessWidget {
+  final String totalPrice;
+
+  final bool isPaypal;
   const CustomButtonBlocConsumer({
     super.key,
     required this.isPaypal,
+    required this.totalPrice,
   });
   final userEmail = "walied@example.com";
-  final bool isPaypal;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PaymentCubit, PaymentState>(
@@ -54,12 +57,17 @@ class CustomButtonBlocConsumer extends StatelessWidget {
   }
 
   void excuteStripePayment(BuildContext context) {
+    final cleanedAmount =
+        (double.tryParse(totalPrice.replaceAll(RegExp(r'[^0-9.]'), '')) ?? 0) *
+            100;
+    final amountAsInt = cleanedAmount.toInt().toString();
+
     PaymentIntentInputModel paymentIntentInputModel = PaymentIntentInputModel(
-      amount: '100',
+      amount: amountAsInt,
       email: userEmail,
       currency: 'USD',
-      customerId: 'cus_Onu3Wcrzhehlez',
     );
+
     BlocProvider.of<PaymentCubit>(context)
         .makePayment(paymentIntentInputModel: paymentIntentInputModel);
   }

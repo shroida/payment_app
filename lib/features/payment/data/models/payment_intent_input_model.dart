@@ -13,7 +13,7 @@ class PaymentIntentInputModel {
 
   Map<String, dynamic> toJson() {
     return {
-      'amount': amount,
+      'amount': '${amount}00',
       'currency': currency,
       if (customerId != null) 'customer': customerId,
     };
