@@ -10,11 +10,11 @@ class PaymentIntentInputModel {
     required this.cusomerId,
   });
 
-  toJson() {
+  Map<String, dynamic> toJson() {
     return {
-      'amount': amount,
-      'cusomer_id': cusomerId,
+      'amount': amount.toString(), // Stripe needs amount as string
       'currency': currency,
+      'payment_method_types[]': 'card'
     };
   }
 }
