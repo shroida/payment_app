@@ -44,11 +44,11 @@ class StripeService {
   Future makePayment(
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
     var paymentIntentModel = await createPaymentIntent(paymentIntentInputModel);
-    var ephemeralKeyModel =
-        await createEphemeralKey(customerId: paymentIntentInputModel.cusomerId);
+    var ephemeralKeyModel = await createEphemeralKey(
+        customerId: paymentIntentInputModel.customerId);
     var initPaymentSheetInputModel = InitiPaymentSheetInputModel(
         clientSecret: paymentIntentModel.clientSecret!,
-        customerId: paymentIntentInputModel.cusomerId,
+        customerId: paymentIntentInputModel.customerId,
         ephemeralKeySecret: ephemeralKeyModel.secret!);
     await initPaymentSheet(
         initiPaymentSheetInputModel: initPaymentSheetInputModel);

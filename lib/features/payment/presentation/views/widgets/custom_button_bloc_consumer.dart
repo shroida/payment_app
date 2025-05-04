@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:payment_app/core/functions/get_transactions.dart';
-import 'package:payment_app/core/utils/constants.dart';
 import 'package:payment_app/core/widget/custom_button.dart';
 import 'package:payment_app/features/payment/data/models/amount_model/amount_model.dart';
 import 'package:payment_app/features/payment/data/models/item_list_model/item_list_model.dart';
@@ -12,7 +12,6 @@ import 'package:payment_app/features/payment/presentation/payment/payment_cubit.
 import 'package:payment_app/features/payment/presentation/payment/payment_state.dart';
 import 'package:payment_app/features/payment/presentation/views/my_cart_view.dart';
 import 'package:payment_app/features/payment/presentation/views/widgets/thank_you_view.dart';
-import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 
 class CustomButtonBlocConsumer extends StatelessWidget {
   const CustomButtonBlocConsumer({
@@ -33,6 +32,7 @@ class CustomButtonBlocConsumer extends StatelessWidget {
         }
 
         if (state is PaymentFailure) {
+          print(state.message);
           Navigator.of(context).pop();
           SnackBar snackBar = SnackBar(content: Text(state.message));
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -58,7 +58,7 @@ class CustomButtonBlocConsumer extends StatelessWidget {
     PaymentIntentInputModel paymentIntentInputModel = PaymentIntentInputModel(
       amount: '100',
       currency: 'USD',
-      cusomerId: 'cus_Onu3Wcrzhehlez',
+      customerId: 'cus_Onu3Wcrzhehlez',
     );
     BlocProvider.of<PaymentCubit>(context)
         .makePayment(paymentIntentInputModel: paymentIntentInputModel);
@@ -70,7 +70,7 @@ class CustomButtonBlocConsumer extends StatelessWidget {
       builder: (BuildContext context) => PaypalCheckoutView(
         sandboxMode: true,
         clientId: 'Constants.clientID',
-        secretKey: ' Constants.paypalSecretKey',
+        secretKey: 'Constants.paypalSecretKey',
         transactions: [
           {
             "amount": transctionsData.amount.toJson(),
