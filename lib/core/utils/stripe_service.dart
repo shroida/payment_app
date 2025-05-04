@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:payment_app/core/utils/api_service.dart';
 import 'package:payment_app/core/utils/constants.dart';
 import 'package:payment_app/features/payment/data/models/payment_intent_model/payment_intent_input_model.dart';
@@ -6,7 +5,6 @@ import 'package:payment_app/features/payment/data/models/payment_intent_model/pa
 import 'package:flutter_stripe/flutter_stripe.dart';
 
 class StripeService {
-  final Dio dio = Dio();
   final ApiService apiService = ApiService();
   Future<PaymentIntentModel> createPaymentIntent(
       PaymentIntentInputModel paymentModel) async {
