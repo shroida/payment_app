@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:payment_app/core/utils/api_service.dart';
 import 'package:payment_app/core/utils/constants.dart';
+import 'package:payment_app/features/payment/data/models/init_payment_sheet_input_model.dart';
 import 'package:payment_app/features/payment/data/models/payment_intent_input_model.dart';
 import 'package:payment_app/features/payment/data/models/payment_intent_model/payment_intent_model.dart';
 
@@ -59,9 +60,9 @@ class StripeService {
         body: {'customer': customerId},
         contentType: Headers.formUrlEncodedContentType,
         url: 'https://api.stripe.com/v1/ephemeral_keys',
-        token: ApiKeys.secretKey,
+        token: Constants.secretKey,
         headers: {
-          'Authorization': "Bearer ${ApiKeys.secretKey}",
+          'Authorization': "Bearer ${Constants.secretKey}",
           'Stripe-Version': '2023-08-16',
         });
 
