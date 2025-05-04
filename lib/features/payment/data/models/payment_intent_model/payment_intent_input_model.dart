@@ -3,17 +3,14 @@ class PaymentIntentInputModel {
   final String currency;
   final String cusomerId;
 
-  PaymentIntentInputModel({
-    required this.amount,
-    required this.currency,
-    required this.cusomerId,
-  });
+  PaymentIntentInputModel(
+      {required this.cusomerId, required this.amount, required this.currency});
 
-  Map<String, dynamic> toJson() {
+  toJson() {
     return {
-      'amount': amount.toString(), // Stripe needs amount as string
+      'amount': '${amount}00',
       'currency': currency,
-      'payment_method_types[]': 'card'
+      'customer': cusomerId
     };
   }
 }
