@@ -29,6 +29,7 @@ class ItemCard extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (_) => MyCartViewBody(
+              imageUrl: imageUrl,
               subtotal: price,
               discount: price * (discount / 100),
               shipping: shippingCost,

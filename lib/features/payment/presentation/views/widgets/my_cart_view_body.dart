@@ -12,6 +12,7 @@ import 'package:payment_app/features/payment/presentation/views/widgets/total_pr
 class MyCartViewBody extends StatelessWidget {
   final double subtotal;
   final double discount;
+  final String imageUrl;
   final double shipping;
 
   const MyCartViewBody({
@@ -19,6 +20,7 @@ class MyCartViewBody extends StatelessWidget {
     required this.subtotal,
     required this.discount,
     required this.shipping,
+    required this.imageUrl,
   });
 
   @override
@@ -32,7 +34,7 @@ class MyCartViewBody extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 18),
-            Expanded(child: Image.asset('assets/images/controller.jpg')),
+            Expanded(child: Image.asset(imageUrl)),
             const SizedBox(height: 25),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
