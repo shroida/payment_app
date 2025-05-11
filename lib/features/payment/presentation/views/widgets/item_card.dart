@@ -20,7 +20,8 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final discountedPrice = price - (price * (discount / 100));
-    double shippingCost = shippingInfo.contains("Free") ? 0.0 : 5.0;
+    final shippingCost = shippingInfo.contains("Free") ? 0.0 : 5.0;
+    final totalPrice = discountedPrice + shippingCost;
 
     return InkWell(
       onTap: () {
@@ -57,15 +58,15 @@ class ItemCard extends StatelessWidget {
               Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(height: 4),
               Text(
-                '\$${discountedPrice.toStringAsFixed(2)}',
+                'Price: \$${discountedPrice.toStringAsFixed(2)}',
                 style: const TextStyle(color: Colors.green),
               ),
               if (discount > 0)
                 Text(
-                  '\$${price.toStringAsFixed(2)}',
+                  'Was: \$${price.toStringAsFixed(2)}',
                   style: const TextStyle(
                     fontSize: 12,
-                    color: Colors.grey,
+                    color: Colors.red,
                     decoration: TextDecoration.lineThrough,
                   ),
                 ),
@@ -73,6 +74,15 @@ class ItemCard extends StatelessWidget {
               Text(
                 shippingInfo,
                 style: const TextStyle(fontSize: 12, color: Colors.black54),
+              ),
+              const SizedBox(height: 6),
+              Text(
+                'Total: \$${totalPrice.toStringAsFixed(2)}',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  color: Colors.blueGrey,
+                ),
               ),
             ],
           ),
