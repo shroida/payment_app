@@ -18,14 +18,14 @@ class MyCartListView extends StatelessWidget {
           children: const [
             ItemCard(
               imageUrl:
-                  'assets/images/controller.jpg', // replace with your asset
+                  'assets/images/smart-watch.jpg', // replace with your asset
               title: 'Smart Watch',
-              price: 199.99,
-              discount: 20,
+              price: 265.99,
+              discount: 10,
               shippingInfo: 'Free Shipping',
             ),
             ItemCard(
-              imageUrl: 'assets/images/controller.jpg',
+              imageUrl: 'assets/images/headset.jpg',
               title: 'Headphones',
               price: 89.99,
               discount: 10,
@@ -34,15 +34,15 @@ class MyCartListView extends StatelessWidget {
             ItemCard(
               imageUrl:
                   'assets/images/controller.jpg', // replace with your asset
-              title: 'Smart Watch',
+              title: 'Controller',
               price: 199.99,
               discount: 20,
               shippingInfo: 'Free Shipping',
             ),
             ItemCard(
-              imageUrl: 'assets/images/controller.jpg',
+              imageUrl: 'assets/images/headset1.jpg',
               title: 'Headphones',
-              price: 89.99,
+              price: 139.99,
               discount: 10,
               shippingInfo: '\$5 Shipping',
             ),
