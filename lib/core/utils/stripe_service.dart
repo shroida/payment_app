@@ -36,14 +36,14 @@ class StripeService {
 
   Future initPaymentSheet(
       {required InitializePaymentSheetInputModel
-          InitializePaymentSheetInputModel}) async {
+          initializePaymentSheetInputModel}) async {
     await Stripe.instance.initPaymentSheet(
       paymentSheetParameters: SetupPaymentSheetParameters(
         paymentIntentClientSecret:
-            InitializePaymentSheetInputModel.clientSecret,
+            initializePaymentSheetInputModel.clientSecret,
         customerEphemeralKeySecret:
-            InitializePaymentSheetInputModel.ephemeralKeySecret,
-        customerId: InitializePaymentSheetInputModel.customerId,
+            initializePaymentSheetInputModel.ephemeralKeySecret,
+        customerId: initializePaymentSheetInputModel.customerId,
         merchantDisplayName: 'Shroida',
       ),
     );
@@ -74,7 +74,7 @@ class StripeService {
     );
 
     await initPaymentSheet(
-        InitializePaymentSheetInputModel: initPaymentSheetInputModel);
+        initializePaymentSheetInputModel: initPaymentSheetInputModel);
     await displayPaymentSheet();
   }
 
