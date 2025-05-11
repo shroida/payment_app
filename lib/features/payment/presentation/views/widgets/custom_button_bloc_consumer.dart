@@ -109,7 +109,7 @@ class CustomButtonBlocConsumer extends StatelessWidget {
           Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) {
-              return const MyCartView();
+              return const MyCartListView();
             }),
             (route) {
               return false;
