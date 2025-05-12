@@ -53,6 +53,23 @@ class StripeService {
     await Stripe.instance.presentPaymentSheet();
   }
 
+  Future<EphemeralKeyModel> createEphemeralKey(
+      {required String customerId}) async {
+    var response = await apiService.post(
+        body: {'customer': customerId},
+        contentType: Headers.formUrlEncodedContentType,
+        url: 'https://api.stripe.com/v1/ephemeral_keys',
+        token: Constants.secretKey,
+        headers: {
+          'Authorization': "Bearer ${Constants.secretKey}",
+          'Stripe-Version': '2023-08-16',
+        });
+
+    var ephermeralKey = EphemeralKeyModel.fromJson(response.data);
+
+    return ephermeralKey;
+  }
+
   Future makePayment({required PaymentIntentInputModel input}) async {
     final customerId = await createCustomer(email: input.email);
 
@@ -76,22 +93,5 @@ class StripeService {
     await initPaymentSheet(
         initializePaymentSheetInputModel: initPaymentSheetInputModel);
     await displayPaymentSheet();
-  }
-
-  Future<EphemeralKeyModel> createEphemeralKey(
-      {required String customerId}) async {
-    var response = await apiService.post(
-        body: {'customer': customerId},
-        contentType: Headers.formUrlEncodedContentType,
-        url: 'https://api.stripe.com/v1/ephemeral_keys',
-        token: Constants.secretKey,
-        headers: {
-          'Authorization': "Bearer ${Constants.secretKey}",
-          'Stripe-Version': '2023-08-16',
-        });
-
-    var ephermeralKey = EphemeralKeyModel.fromJson(response.data);
-
-    return ephermeralKey;
   }
 }
